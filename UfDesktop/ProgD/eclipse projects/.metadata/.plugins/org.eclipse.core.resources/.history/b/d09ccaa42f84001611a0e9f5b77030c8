@@ -1,0 +1,119 @@
+import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class ShapeMachine {
+	public static void main(String[] args){
+		Scanner input = new Scanner(System.in);	
+		String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+		int x = 0;
+		int y = 0;
+		String userDay = "";
+		String userMonth = "";
+		String userYear = "";
+		String userDMY = "";
+		System.out.println("Shape Machine Login");
+		//while loop for 3 attempts
+		while (y!=3)
+		{
+		System.out.println("");
+		System.out.println("What is today's day? ");
+		 userDay = input.nextLine();
+		System.out.println("What is today's month? ");
+		 userMonth = input.nextLine();
+		System.out.println("What is today's year? ");
+		 userYear = input.nextLine();
+		userDMY = (userDay + "-" + userMonth + "-" + userYear);
+		if (userDMY.equals(date) == true)
+			break;
+		y++;
+		if (y == 3)
+		{
+			System.out.println("#ERROR 3rd invalid login attempt. Terminating program.");
+			System.exit(0);
+		}
+		System.out.println("#ERROR Login attempt #" + y + " Invalid input. Please try again.");
+		//end of while loop
+		}	
+		
+		System.out.println("Correct date. Welcome!");
+		System.out.println("");
+		String c = "Circles";
+		String r = "Rectangles";
+		String t = "Triangles";
+		String e = "Exit";
+		System.out.println("---Welcome to the Shape Machine---");
+		System.out.println("Available Options:");
+		System.out.println(c);
+		System.out.println(r);
+		System.out.println(t);
+		System.out.println(e);
+		String userChoice = input.nextLine();
+		// while loop for invalid input
+		//menuLoop: while ((userChoice.equals(c) != true) && (userChoice.equals(r) != true) && (userChoice.equals(t) != true) && (userChoice.equals(e) != true))
+		menuLoop: while (userChoice.equals(e) != true)
+		{
+			if ((userChoice.equals(c) != true) && (userChoice.equals(r) != true) && (userChoice.equals(t) != true) && (userChoice.equals(e) != true))
+			{
+			System.out.println("#ERROR Invalid option. Please try again.");
+			}
+			System.out.println("---Welcome to the Shape Machine---");
+			System.out.println("Available Options:");
+			System.out.println(c);
+			System.out.println(r);
+			System.out.println(t);
+			System.out.println(e);
+			userChoice = input.nextLine();		
+		}
+		// circle path
+		if (userChoice.equals(c))
+		{
+		System.out.println("Circles selected. Please enter the radius: ");
+		String radius = input.nextLine();
+		double radius1 = Double.parseDouble(radius);
+	
+		while (radius1 < 0)
+			{
+			System.out.println("#ERROR Negative input. Please input the radius again:");
+			radius = input.nextLine();
+			radius1 = Double.parseDouble(radius);
+			}
+			double circumference = (2 * radius1 * Math.PI);
+			double areaCircle =  ((Math.pow(radius1, 2)) * Math.PI);
+			System.out.println("The circumference is: " + circumference);
+			System.out.println("The area is: " + areaCircle);
+			String circumferenceDigits = String.valueOf(circumference);
+			// gets rid of decimal place so the digits is accurate
+			int decimalPlace = circumferenceDigits.indexOf('.');
+			String circumferenceDigits1 = circumferenceDigits.substring(0, decimalPlace);
+			String circumferenceDigits2 = circumferenceDigits.substring(decimalPlace + 1);
+			String circumferenceDigits3 = (circumferenceDigits1 + circumferenceDigits2);
+			System.out.println("Total number of digits in the circumference is: " + circumferenceDigits3.length());
+			
+			String areaCircleDigits = String.valueOf(areaCircle);
+			// gets rid of decimal place so the digits is accurate
+			int decimalPlaceArea = areaCircleDigits.indexOf('.');
+			String areaCircleDigits1 = areaCircleDigits.substring(0, decimalPlaceArea);
+			String areaCircleDigits2 = areaCircleDigits.substring(decimalPlaceArea + 1);
+			String areaCircleDigits3 = (areaCircleDigits1 + areaCircleDigits2);
+			System.out.println("Total number of digits in the area is: " + areaCircleDigits3.length());
+			
+		}
+
+		// rectangle path
+		if (userChoice.equals(r))
+		{
+		System.out.println("Rectangles selected. Please enter the 2 sides: ");
+		}
+		//Triangle path
+		if (userChoice.equals(t))
+		{
+		System.out.println("Triangles selected. Please enter the 3 sides: ");
+		}
+		//exit
+		if (userChoice.equals(e))
+		{
+		System.out.println("Terminating program. Have a nice day!");
+		System.exit(0);
+		}
+	}
+}
