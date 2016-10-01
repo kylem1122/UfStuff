@@ -1,0 +1,27 @@
+package test1;
+
+public class test1 {
+	static int y = 0;
+	public static  void thing ()
+	{
+		for (; y<10; y++)
+		{
+			System.out.println("hello");
+		}
+		
+	}
+	public static void main(String[] args)
+	{
+		int x = 100;
+		while (x >= 0)
+		{
+			x--;
+			
+		}
+		System.out.println(x);
+		//thing();
+		float w = 7/3 + (9);
+		boolean q = !(true) && false;
+		System.out.println(q);
+	}
+}
